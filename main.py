@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QDialog, QVBoxLayout,
                              QHBoxLayout, QLabel, QLineEdit, QTextEdit, 
                              QSpinBox, QPushButton, QMessageBox, QListWidgetItem)
 from PyQt5.QtCore import Qt
-from ui_mainwindow import Ui_MainWindow
+from ui_mainwindow_new import Ui_MainWindow
 from ui_dialog import Ui_Dialog
 
 class Task:
@@ -15,9 +15,6 @@ class Task:
         self.description = description
         self.priority = priority
         self.timestamp = int(time.time())
-
-    def __str__(self):
-        return f"Задача: {self.title}, Описание: {self.description}, Приоритет: {self.priority}, Время добавления: {time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(self.timestamp))}"
 
 
 class ToDoList:
@@ -83,7 +80,12 @@ class ToDoList:
             print(f"Задача с ID {task_id} обновлена.")
         else:
             print(f"Задача с ID {task_id} не найдена.")
-
+        
+    def get_tasks(self):
+        query = 'SELECT * FROM tasks'
+        self.cursor.execute(query)
+        return self.cursor.fetchall()
+    
     def close(self):
         self.conn.close()
 
@@ -113,9 +115,7 @@ class ToDoApp(QMainWindow, Ui_MainWindow):
 
     def load_tasks(self):
         self.listWidget.clear()
-        query = "SELECT * FROM tasks ORDER BY timestamp DESC"
-        self.todo_list.cursor.execute(query)
-        tasks = self.todo_list.cursor.fetchall()
+        tasks = self.todo_list.get_tasks()
         for task in tasks:
             item = QListWidgetItem(f"ID: {task[0]} | {task[1]} (Приоритет: {task[3]})")
             item.setData(Qt.UserRole, task[0])
@@ -149,18 +149,16 @@ if __name__ == "__main__":
     window.show()
     sys.exit(app.exec_())
 
-    task1 = Task("Купить продукты", "Купить молоко, хлеб и овощи", 2)
-    task2 = Task("Закончить проект", "Завершить работу над проектом", 1)
+    # task1 = Task("Купить продукты", "Купить молоко, хлеб и овощи", 2)
+    # task2 = Task("Закончить проект", "Завершить работу над проектом", 1)
 
-    todo.add_task(task1)
-    todo.add_task(task2)
+    # todo.add_task(task1)
+    # todo.add_task(task2)
 
-    print("\nВсе задачи:")
-    todo.view_tasks()
+    # todo.view_tasks()
 
-    todo.delete_task(1)
+    # todo.delete_task(1)
 
-    print("\nПосле удаления задачи с ID 1:")
-    todo.view_tasks()
+    # todo.view_tasks()
 
-    todo.close()
+    # todo.close()

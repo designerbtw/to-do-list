@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'untitled.ui'
+# Form implementation generated from reading ui file 'mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -14,30 +14,34 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1000, 800)
+        MainWindow.resize(467, 437)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.splitter = QtWidgets.QSplitter(self.centralwidget)
-        self.splitter.setGeometry(QtCore.QRect(220, 100, 256, 308))
-        self.splitter.setOrientation(QtCore.Qt.Vertical)
-        self.splitter.setObjectName("splitter")
-        self.label = QtWidgets.QLabel(self.splitter)
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.label = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Bahnschrift SemiBold")
         font.setPointSize(15)
         self.label.setFont(font)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-        self.listWidget = QtWidgets.QListWidget(self.splitter)
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+        self.listWidget = QtWidgets.QListWidget(self.centralwidget)
         self.listWidget.setObjectName("listWidget")
-        self.pushButton = QtWidgets.QPushButton(self.splitter)
+        self.gridLayout.addWidget(self.listWidget, 1, 0, 1, 1)
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setObjectName("pushButton")
-        self.delete_task = QtWidgets.QPushButton(self.splitter)
+        self.gridLayout.addWidget(self.pushButton, 2, 0, 1, 1)
+        self.delete_task = QtWidgets.QPushButton(self.centralwidget)
         self.delete_task.setObjectName("delete_task")
-        self.update_task = QtWidgets.QPushButton(self.splitter)
+        self.gridLayout.addWidget(self.delete_task, 3, 0, 1, 1)
+        self.update_task = QtWidgets.QPushButton(self.centralwidget)
         self.update_task.setObjectName("update_task")
-        self.update_all = QtWidgets.QPushButton(self.splitter)
+        self.gridLayout.addWidget(self.update_task, 4, 0, 1, 1)
+        self.update_all = QtWidgets.QPushButton(self.centralwidget)
         self.update_all.setObjectName("update_all")
+        self.gridLayout.addWidget(self.update_all, 5, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -54,3 +58,13 @@ class Ui_MainWindow(object):
         self.delete_task.setText(_translate("MainWindow", "Удалить"))
         self.update_task.setText(_translate("MainWindow", "Изменить"))
         self.update_all.setText(_translate("MainWindow", "Обновить"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
