@@ -20,26 +20,7 @@
 - **Система приоритетов**: 5 уровней приоритета (1-наивысший, 5-низший)
 - **Подробный просмотр**: детальная информация по задаче
 - **Изоляция пользователей**: каждый пользователь видит только свои задачи
-- **Адаптивный интерфейс**: масштабирование окон
 - **Постоянство данных**: сохранение в SQLite
-
-## Установка и запуск
-
-1. Клонирование репозитория:
-```bash
-git clone https://github.com/designerbtw/to-do-list.git
-cd to-do-list
-```
-
-2. Установка зависимостей:
-```bash
-pip install -r requirements.txt
-```
-
-3. Запуск приложения:
-```bash
-python main.py
-```
 
 ## Использование
 
@@ -62,21 +43,6 @@ python main.py
 ├── UML_Diagram.md            # UML диаграмма в Mermaid формате
 └── UML.png                   # UML диаграмма классов
 ```
-
-## Архитектура
-
-### Классы данных
-- **Task**: модель задачи (название, описание, приоритет, время создания)
-
-### Слой данных
-- **ToDoList**: менеджер базы данных, аутентификация, CRUD операции
-
-### Слой представления
-- **ToDoApp**: главное окно приложения
-- **LoginDialog**: диалог входа и регистрации
-- **AddTaskDialog**: диалог добавления задачи
-- **ChangeTaskDialog**: диалог редактирования задачи
-- **TaskDetailsDialog**: диалог просмотра деталей задачи
 
 ### База данных
 
@@ -114,18 +80,6 @@ pyuic5 -x task_details_dialog.ui -o ui_task_details_dialog.py
 - PyQt5==5.15.11
 
 Полный список в requirements.txt
-
-## Автор
-
-Студенческий проект - Система управления задачами
-
-**Database locked error**:
-- Close all instances of the application
-- Check if `todo_list.db` is being accessed by another process
-
-**UI elements not displaying correctly**:
-- Ensure all `.ui` files are properly converted to `.py` files
-- Check that all UI imports are correct in `main.py`
 
 ## Future Enhancements
 
