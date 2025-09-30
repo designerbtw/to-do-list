@@ -91,7 +91,3 @@ pyuic5 -x task_details_dialog.ui -o ui_task_details_dialog.py
 - [ ] Dark theme support
 - [ ] Task search and filtering
 - [ ] Backup and restore features
-
----
-
-Made with ❤️ using Python and PyQt5
